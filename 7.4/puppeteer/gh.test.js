@@ -2,7 +2,6 @@ let page;
 
 beforeEach(async () => {
   page = await browser.newPage();
-  await page.goto("https://github.com/");
 });
 
 
@@ -12,7 +11,6 @@ afterEach(() => {
 
 describe("Github page tests", () => {
   beforeEach(async () => {
-    page = await browser.newPage();
     await page.goto("https://github.com/team");
   });
 
@@ -40,6 +38,9 @@ describe("Github page tests", () => {
 });
 
 describe("Should check titles for GitHub pages", () => {
+  beforeEach(async () => {
+    await page.goto("https://github.com/");
+  });
   test("Should check Pricing page", async () => {
       await page.goto("https://github.com/pricing");
       const title = await page.title();
